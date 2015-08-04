@@ -60,6 +60,13 @@ createdb () {
     $asweb psql -d $dbname -f /usr/share/postgresql/9.3/contrib/postgis-2.1/spatial_ref_sys.sql
 }
 
+download () {
+    # download taiwan map
+    if [ ! -f /data/import.pbf ] ; then
+        wget -O /tmp/import.pbf http://download.geofabrik.de/asia/taiwan-latest.osm.pbf
+    fi
+}
+
 import () {
     # Find the most recent import.pbf or import.osm
     import=$( ls -1t /data/import.pbf /data/import.osm 2>/dev/null | head -1 )
