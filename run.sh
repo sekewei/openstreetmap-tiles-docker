@@ -62,10 +62,8 @@ createdb () {
 
 download () {
     # download taiwan map
-    if [ ! -f /data/import.pbf ] ; then
-        wget -O /data/import.pbf http://download.geofabrik.de/asia/taiwan-latest.osm.pbf
-    fi
-    exit
+    import=$( ls -1t /data/import.pbf /data/import.osm 2>/dev/null | head -1 )
+    test -n "${import}" || wget -O /data/import.pbf http://download.geofabrik.de/asia/taiwan-latest.osm.pbf
 }
 
 import () {
