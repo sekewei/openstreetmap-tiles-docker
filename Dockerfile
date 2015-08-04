@@ -108,6 +108,10 @@ RUN update-service --add /etc/sv/apache2
 ADD renderd /etc/sv/renderd
 RUN update-service --add /etc/sv/renderd
 
+# Setup web pages # TW
+RUN rm -rf /var/www/html
+ADD leafletjs-localmap /var/www/html
+
 # Clean up APT when done
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
