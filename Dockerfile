@@ -24,7 +24,6 @@ RUN apt-get install -y libboost-dev libboost-filesystem-dev libboost-program-opt
 
 # Install remaining dependencies
 RUN apt-get install -y subversion git-core tar unzip wget bzip2 build-essential autoconf libtool libxml2-dev libgeos-dev libpq-dev libbz2-dev munin-node munin libprotobuf-c0-dev protobuf-c-compiler libfreetype6-dev libpng12-dev libtiff4-dev libicu-dev libgdal-dev libcairo-dev libcairomm-1.0-dev apache2 apache2-dev libagg-dev liblua5.2-dev ttf-unifont
-
 RUN apt-get install -y autoconf apache2-dev libtool libxml2-dev libbz2-dev libgeos-dev libgeos++-dev libproj-dev gdal-bin libgdal1-dev mapnik-utils python-mapnik libmapnik-dev
 
 # Install postgresql and postgis
@@ -48,6 +47,11 @@ RUN cd /tmp/mapnik && \
 
 # Verify that Mapnik has been installed correctly
 RUN python -c 'import mapnik'
+
+# Install Cascadenik
+RUN apt-get install -y python-cssutils python-imaging
+RUN cd /tmp && git clone https://github.com/mapnik/Cascadenik.git
+RUN cd /tmp/Cascadenik && python setup.py install
 
 # Install mod_tile and renderd
 RUN cd /tmp && git clone git://github.com/openstreetmap/mod_tile.git
