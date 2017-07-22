@@ -29,10 +29,10 @@ RUN apt-get install -y autoconf apache2-dev libtool libxml2-dev libbz2-dev libge
 # Install postgresql and postgis
 RUN apt-get install -y postgresql-9.3-postgis-2.1 postgresql-contrib postgresql-server-dev-9.3
 
-# Install osm2pgsql
+# Install osm2pgsql, checkout the older 2015 version with autogen.sh
 RUN cd /tmp && git clone git://github.com/openstreetmap/osm2pgsql.git
 RUN cd /tmp/osm2pgsql && \
-    git checkout 9687470 \  ### the 2015 version with autogen.sh
+    git checkout 9687470 && \
     ./autogen.sh && \
     ./configure && \
     make && make install
