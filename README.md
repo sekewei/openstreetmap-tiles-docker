@@ -42,7 +42,7 @@ on GitHub. Pull requests are very welcome!
   or download from https://github.com/sekewei/openstreetmap-tiles-docker
 
 * cd openstreetmap-tiles-docker/
-* docker build -t twstd:latest .
+* docker build -t twstd:v0 .
 
 **  run the bare map server, load the data and services, and save the image
 * docker run -it -v /home/seke/docker/data/osm-postgresql:/var/lib/postgresql	--name twstd twstd:v0  /bin/bash
