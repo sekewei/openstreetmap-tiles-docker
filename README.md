@@ -1,4 +1,4 @@
-# OpenStreetMap Tile Server Container
+ OpenStreetMap Tile Server Container
 
 This repository contains instructions for building a
 [Docker](https://www.docker.io/) image containing the OpenStreetMap tile
@@ -45,7 +45,7 @@ on GitHub. Pull requests are very welcome!
 * docker build -t twstd:v0 .
 
 **  run the bare map server, load the data and services, and save the image
-* docker run -it -v /home/seke/docker/data/osm-postgresql:/var/lib/postgresql	--name twstd twstd:v0  /bin/bash
+* docker run -it  -v /docker/data/osm-postgresql:/var/lib/postgresql	 --name twstd twstd:v0  /bin/bash
 
 * docker attach twstd
 
@@ -61,10 +61,10 @@ on GitHub. Pull requests are very welcome!
 * docker commit -m full_loaded twstd twstd:v1
 
 **  launch the map server and test on the browser
-* docker run -it -p 80:80  --name twstd  twstd:v1
+* docker run -it -p 80:80  -v /docker/data/osm-postgresql:/var/lib/postgresql  --name twstd  twstd:v1
 * cd /usr/local/sbin/
 * ./run startservices
 
-* http://localhost/
-* click the item '開放街圖 openstreetmap'
+* use a browser to access the URL: http://localhost/
+* click the item '本地街圖 localstreetmap'
 
