@@ -15,6 +15,7 @@ Commands:
   startservices    Start the osm web services
   cli              Drop into a bash shell
   dropdb           Drop the osm database
+  updatemap        Download new map and update the database
 
 Set up a database saved on an external volume:
   The following command will initialise the postgresql database on an external
