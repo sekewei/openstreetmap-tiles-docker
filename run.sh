@@ -121,6 +121,26 @@ _wait () {
     fi
 }
 
+updatemap() {
+    echo "Stop renderd and apache2"
+    sv stop renderd
+    sv stop apache2
+
+    dropdb
+    createdb
+
+    echo "get taiwan map"
+    wget -O /data/import.pbf http://download.geofabrik.de/asia/taiwan-latest.osm.pbf
+    import
+
+    echo "rm -rf /var/lib/mod_tile/default/*"
+    rm -rf /var/lib/mod_tile/default/*
+
+    sv start renderd
+    sv start apache2
+}
+
+
 # Unless there is a terminal attached wait until 5 seconds after boot
 # when runit will have started supervising the services.
 if ! tty --silent
