@@ -68,3 +68,8 @@ on GitHub. Pull requests are very welcome!
 * use a browser to access the URL: http://localhost/
 * click the item '本地街圖 localstreetmap'
 
+**  update the map
+* docker attach twstd
+* cd /usr/local/sbin/
+* ./run updatemap
+* Ctrl-p + Ctrl-q
